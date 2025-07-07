@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Age Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='age_calculator_styles.css') }}" />
+</head>
+<body>
+  <div class="container comic-relief-regular">
+    <h1 class="comic-relief-bold">Age Calculator</h1>
+    <label for="birthdate">Enter your birth date:</label>
+    <div class="input-group">
+      <input type="date" id="birthdate" name="birthdate" required />
+    </div>
+    <button id="calculate">Calculate</button>
+
+    <p id="result" style="display: none;"></p>
+  </div>
+  <script>
+    document.getElementById("calculate").addEventListener("click", function () {
+      const birthdate = document.getElementById("birthdate").value;
+      if (!birthdate) {
+        document.getElementById("result").innerHTML = "Please select your birth date.";
+        return;
+      }
+      fetch("/age-calculator", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+             },
+            body: JSON.stringify({ birthdate: birthdate }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.age) {
+            const resultElement = document.getElementById("result");
+            resultElement.style.display = "block";
+            resultElement.innerHTML = `You are <strong class="comic-relief-bold">${data.age}</strong> old`;
+        } else {
+          resultElement.style.display = "block";
+          document.getElementById("result").innerHTML = "Could not calculate age.";
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        document.getElementById("result").innerHTML = "An error occurred.";
+      });
+    });
+  </script>
+</body>
+</html>

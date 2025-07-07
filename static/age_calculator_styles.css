@@ -1,0 +1,94 @@
+.comic-relief-regular {
+  font-family: "Comic Relief", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.comic-relief-bold {
+  font-family: "Comic Relief", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.container {
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  font-size: 1.2rem;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: white;
+  color: black;
+  font-family: "Comic Relief", system-ui;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.calendar-icon {
+  pointer-events: none;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.2rem;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  font-family: "Comic Relief", system-ui;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+#result {
+  font-size: 1.25rem;
+}
+
+#result strong {
+  font-weight: bold;
+}
