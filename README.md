@@ -53,7 +53,7 @@ age-calculator/
 3. Install Requirements:
 
    ```bash
-   pip3 install requirements.txt
+   pip3 -r install requirements.txt
    ```
 
 4. Run the application:
